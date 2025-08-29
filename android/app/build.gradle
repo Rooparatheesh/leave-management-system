@@ -1,0 +1,41 @@
+plugins {
+    id("com.android.application")
+    id("kotlin-android")
+    // Flutter plugin must come after Android and Kotlin
+    id("dev.flutter.flutter-gradle-plugin")
+    // ✅ Firebase Google Services plugin
+    id("com.google.gms.google-services")
+}
+
+android {
+    namespace = "com.example.leave_management1"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    defaultConfig {
+        applicationId = "com.example.leave_management1"
+        minSdk = 23
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    buildTypes {
+        getByName("release") {
+            signingConfig = signingConfigs.getByName("debug")
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
